@@ -8,6 +8,8 @@ import facilityRouter from '../server/routes/facility.routes.js';
 import monthlyReportRouter from './routes/monthlyReport.routes.js';
 import { errorMiddleware } from './middlewares/errors.js';
 import cors from './middlewares/cors.js';
+import 'dotenv/config';
+
 const PORT = process.env.PORT || config.get('serverPort');
 const dburl = config.get('dburl');
 
@@ -24,7 +26,7 @@ app.use(errorMiddleware);
 
 const start = () => {
   try {
-    mongoose.connect(dburl);
+    mongoose.connect(process.env.DBHOST);
     app.listen(PORT, () => {
       console.log('server started');
     });
