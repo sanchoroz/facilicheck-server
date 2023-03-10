@@ -8,8 +8,9 @@ import facilityRouter from '../server/routes/facility.routes.js';
 import monthlyReportRouter from './routes/monthlyReport.routes.js';
 import { errorMiddleware } from './middlewares/errors.js';
 import cors from './middlewares/cors.js';
-const PORT = config.get('serverPort');
+const PORT = process.env.PORT || config.get('serverPort');
 const dburl = config.get('dburl');
+
 const app = express();
 
 app.use(express.json());
