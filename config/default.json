@@ -1,0 +1,6 @@
+{
+  "serverPort": 5000,
+  "dburl": "mongodb+srv://urbanixdbadmin:F8tRFPeTtqt9LuIu@cluster0.6cpnv.mongodb.net/urbanixdb?retryWrites=true&w=majority",
+  "jwtAccessTokenSekretKey": "dfsfsf fsdfsdf sfdddd",
+  "jwtRefreshTokenSekretKey": "dfsfsf fsdfsdfadsfgfdgsdfg sfdddd"
+}
