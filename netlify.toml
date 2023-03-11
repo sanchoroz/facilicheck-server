@@ -1,2 +1,13 @@
-[build]
-  command = "npm install"
+[[redirects]]
+  # Redirect all requests to the Netlify function
+  from = "/*"
+  to = "/api/:splat"
+  status = 200
+
+[[functions]]
+  # Define the Netlify function to run the Express app
+  name = "api"
+  # Set the path to the directory containing the server code
+  path = "."
+  # Set the command to start the server
+  command = "node index.js"
