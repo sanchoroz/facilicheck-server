@@ -3,9 +3,9 @@ import express from 'express';
 import config from 'config';
 import path from 'path';
 import cookieParser from 'cookie-parser';
-import authRouter from '../server/routes/auth.routes.js';
-import gardenRouter from '../server/routes/garden.routes.js';
-import facilityRouter from '../server/routes/facility.routes.js';
+import authRouter from './routes/auth.routes.js';
+import gardenRouter from './routes/garden.routes.js';
+import facilityRouter from './routes/facility.routes.js';
 import monthlyReportRouter from './routes/monthlyReport.routes.js';
 import { errorMiddleware } from './middlewares/errors.js';
 import cors from './middlewares/cors.js';
@@ -27,7 +27,7 @@ app.use(errorMiddleware);
 
 const start = () => {
   try {
-    mongoose.connect(process.env.DBHOST);
+    mongoose.connect(dburl);
     app.listen(PORT, () => {
       console.log('server started on port: ', PORT);
     });
