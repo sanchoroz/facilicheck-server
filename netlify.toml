@@ -1,11 +1,2 @@
 [build]
-  # Do not run a build command
-  command = ""
-
-[[plugins]]
-  # Use the Node.js build plugin to install dependencies and run the server
-  package = "@netlify/plugin-nextjs"
-  
-  [plugins.inputs]
-    # Specify the command to start the server
-    command = "node index.js"
+  command = "npm install"
