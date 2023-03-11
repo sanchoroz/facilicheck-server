@@ -1,7 +1,5 @@
 import Garden from '../models/garden-model.js';
 import Facility from '../models/facility-model.js';
-import Status from '../models/status-model.js';
-import UserDto from '../dtos/user-dto.js';
 import ApiErrors from '../exceptions/api-errors.js';
 
 class GardenService {

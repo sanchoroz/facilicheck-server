@@ -1,5 +1,3 @@
-import User from '../models/user-model.js';
-import bcryptjs from 'bcryptjs';
 import userService from '../service/user-service.js';
 
 class UserController {
