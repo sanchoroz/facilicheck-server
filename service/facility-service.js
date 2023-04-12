@@ -29,16 +29,19 @@ class FacilityService {
 
   async delete(id) {
     const deletedFacility = await Facility.findByIdAndDelete(id);
+    const garden = await Garden.findOne({ facilities: { $eq: id } });
+    garden.facilities.pull(id);
+    await garden.save();
     return deletedFacility;
   }
 
   async getAllFacilities() {
-    const facilities = await Facility.find();
+    const facilities = await Facility.find().populate('garden');
     return facilities;
   }
 
   async getFacility(id) {
-    const facility = await Facility.findOne({ id });
+    const facility = await Facility.findById(id).populate('garden');
     return facility;
   }
 }

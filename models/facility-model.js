@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
 const FacilitySchema = new mongoose.Schema({
   facilityName: { type: String, unique: true },
+  garden: { type: Schema.Types.ObjectId, ref: 'Garden' },
   sku: { type: String, unique: true },
   standard: { type: String },
   manufacturer: { type: String },
