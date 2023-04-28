@@ -8,7 +8,7 @@ import ApiErrors from '../exceptions/api-errors.js';
 import mailService from './mail-service.js';
 
 class UserService {
-  async register(email, password) {
+  async register(name, email, password) {
     const candidate = await User.findOne({ email });
 
     if (candidate) {
@@ -20,11 +20,12 @@ class UserService {
 
     const role = await Role.findOne({ value: 'ADMIN' });
 
+    console.log('role', role);
+
     const user = new User({
+      name,
       email,
       password: hashPassword,
-      isActivated: false,
-      activationLink: activationLink,
       roles: [role.value],
     });
     await user.save();
