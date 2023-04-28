@@ -30,6 +30,7 @@ const start = () => {
     mongoose.connect(process.env.DBHOST || dburl);
     app.listen(PORT, () => {
       console.log('server started on port: ', PORT);
+      console.log('server started on dbhost: ', process.env.DBHOST);
     });
   } catch (error) {}
 };
