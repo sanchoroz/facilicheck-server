@@ -27,10 +27,11 @@ app.use(errorMiddleware);
 
 const start = () => {
   try {
-    mongoose.connect(process.env.DBHOST || dburl);
+    const dburi = process.env.DBHOST || dburl;
+    mongoose.connect(dburi);
     app.listen(PORT, () => {
       console.log('server started on port: ', PORT);
-      console.log('server started on dbhost: ', process.env.DBHOST);
+      console.log('server started on dbhost: ', dburi);
     });
   } catch (error) {}
 };
