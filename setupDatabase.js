@@ -20,8 +20,8 @@ const setupDatabase = async () => {
 
     // // Insert test data into the 'users' collection
     // await Garden.insertMany(users);
-
-    // console.log('Database setup completed successfully.');
+    console.log('dburl: ',dburl);
+    console.log('Database setup completed successfully.');
   } catch (error) {
     console.error('Database setup error:', error);
   } finally {
