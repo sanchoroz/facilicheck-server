@@ -1,0 +1,26 @@
+name: Server Database Setup
+
+on:
+  repository_dispatch:
+    types: [setup-database]
+
+jobs:
+  setup-database:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Server Repository
+        uses: actions/checkout@v2
+        with:
+          repository: sanchoroz/facilicheck-server
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Database Setup Script
+        run: node setupDatabase.js

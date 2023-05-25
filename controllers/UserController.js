@@ -3,9 +3,9 @@ import userService from '../service/user-service.js';
 class UserController {
   async register(req, res, next) {
     try {
-      const { name, email, password } = req.body;
+      const { name, email, password, role } = req.body;
 
-      const userData = await userService.register(name, email, password);
+      const userData = await userService.createUser(name, email, password, role);
       return res.json(userData);
     } catch (error) {
       next(error);
@@ -67,6 +67,15 @@ class UserController {
     try {
       const users = await userService.getAllUsers();
       return res.json(users);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async getRoles(req, res, next) {
+    try {
+      const roles = await userService.getAllRoles();
+      return res.json(roles);
     } catch (error) {
       next(error);
     }

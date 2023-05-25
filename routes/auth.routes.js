@@ -14,11 +14,11 @@ router.get('/me', auth, UserController.me);
 router.get('/activate/:link', UserController.activate);
 router.get('/refresh', UserController.refresh);
 router.get('/users', rolesAuth(['ADMIN']), UserController.getUsers);
-
-//
+router.get('/roles', rolesAuth(['ADMIN']), UserController.getRoles);
 router.get('/role', async (req, res, next) => {
+  const { email, password } = req.body;
   const moderator = new Role({
-    value: 'MODERAddTOR',
+    value: '',
   });
 
   await moderator.save();

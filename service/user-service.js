@@ -8,7 +8,7 @@ import ApiErrors from '../exceptions/api-errors.js';
 import mailService from './mail-service.js';
 
 class UserService {
-  async register(name, email, password) {
+  async createUser(name, email, password, role) {
     const candidate = await User.findOne({ email });
 
     if (candidate) {
@@ -16,21 +16,16 @@ class UserService {
     }
 
     const hashPassword = await bcryptjs.hash(password, 5);
-    const activationLink = uuidv4();
 
-    const role = await Role.findOne({ value: 'ADMIN' });
-
-    console.log('role', role);
+    const userRole = await Role.findOne({ value: role });
 
     const user = new User({
       name,
       email,
       password: hashPassword,
-      roles: [role.value],
+      roles: [userRole.value],
     });
     await user.save();
-
-    //await mailService.sendActivationMail(email, activationLink);
 
     const userDto = new UserDto(user);
     const tokens = await tokenService.generateToken({ ...userDto });
@@ -94,6 +89,11 @@ class UserService {
   async getAllUsers() {
     const users = await User.find();
     return users;
+  }
+
+  async getAllRoles() {
+    const roles = await Role.find();
+    return roles;
   }
 }
 
