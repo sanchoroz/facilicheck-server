@@ -8,6 +8,9 @@ jobs:
   setup-database:
     runs-on: ubuntu-latest
 
+    env:
+      DBHOST: ${{secrets.DBSTAGE}}
+
     steps:
       - name: Checkout Server Repository
         uses: actions/checkout@v2
