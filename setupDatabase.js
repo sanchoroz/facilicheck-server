@@ -13,13 +13,13 @@ mongoose.connect(dburl, {
 const setupDatabase = async () => {
   try {
 
-    await Facility.deleteMany({}).then(function(){
+    await Facility.remove({}).then(function(){
       console.log("Facility Data deleted"); // Success
       }).catch(function(error){
           console.log(error); // Failure
       });
 
-    await Garden.deleteMany({}).then(function(){
+    await Garden.remove({}).then(function(){
       console.log("Garden Data deleted"); // Success
       }).catch(function(error){
           console.log(error); // Failure
