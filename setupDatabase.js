@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import Garden from './models/garden-model.js'
 import Facility from './models/facility-model.js'
+import MonthlyReport from './models/monthly-report-model.js'
 import 'dotenv/config';
 
 const dburl = process.env.DBHOST
@@ -13,21 +14,23 @@ mongoose.connect(dburl, {
 const setupDatabase = async () => {
   try {
 
-    const res = await Facility.find()
+    await Facility.remove({}).then(function(){
+      console.log("Facility Data deleted"); // Success
+      }).catch(function(error){
+          console.log(error); // Failure
+      });
 
-    console.log('Facility: ', res);
+    await Garden.remove({}).then(function(){
+      console.log("Garden Data deleted"); // Success
+      }).catch(function(error){
+          console.log(error); // Failure
+      });
 
-    // await Facility.remove({}).then(function(){
-    //   console.log("Facility Data deleted"); // Success
-    //   }).catch(function(error){
-    //       console.log(error); // Failure
-    //   });
-
-    // await Garden.remove({}).then(function(){
-    //   console.log("Garden Data deleted"); // Success
-    //   }).catch(function(error){
-    //       console.log(error); // Failure
-    //   });
+    await MonthlyReport.remove({}).then(function(){
+      console.log("Monthly Report Data deleted"); // Success
+      }).catch(function(error){
+          console.log(error); // Failure
+      });
 
     // const users = [
     //   { name: 'John Doe', email: 'john@example.com', password: 'password1' },
