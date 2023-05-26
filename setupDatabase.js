@@ -19,11 +19,11 @@ const setupDatabase = async () => {
           console.log(error); // Failure
       });
 
-    await Garden.remove({}).then(function(){
-      console.log("Garden Data deleted"); // Success
-      }).catch(function(error){
-          console.log(error); // Failure
-      });
+    // await Garden.remove({}).then(function(){
+    //   console.log("Garden Data deleted"); // Success
+    //   }).catch(function(error){
+    //       console.log(error); // Failure
+    //   });
 
     // const users = [
     //   { name: 'John Doe', email: 'john@example.com', password: 'password1' },
