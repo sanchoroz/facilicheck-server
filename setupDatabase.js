@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import Garden from './models/garden-model.js'
+import Facility from './models/facility-model.js'
 import 'dotenv/config';
 
 const dburl = process.env.DBHOST
@@ -11,6 +12,7 @@ mongoose.connect(dburl, {
 
 const setupDatabase = async () => {
   try {
+    await Facility.deleteMany();
     await Garden.deleteMany();
 
     // const users = [
