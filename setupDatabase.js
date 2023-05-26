@@ -12,9 +12,12 @@ mongoose.connect(dburl, {
 
 const setupDatabase = async () => {
   try {
-    await Facility.deleteMany(function(err) {
-      console.log('error: ',err)
-    });
+    await Facility.deleteMany({}).then(function(){
+      console.log("Facility Data deleted"); // Success
+      }).catch(function(error){
+          console.log(error); // Failure
+      });
+
     await Garden.deleteMany()
 
     // const users = [
