@@ -12,8 +12,10 @@ mongoose.connect(dburl, {
 
 const setupDatabase = async () => {
   try {
-    await Facility.deleteMany();
-    await Garden.deleteMany();
+    await Facility.deleteMany(function(err) {
+      console.log('error: ',err)
+    });
+    await Garden.deleteMany()
 
     // const users = [
     //   { name: 'John Doe', email: 'john@example.com', password: 'password1' },
